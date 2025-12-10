@@ -2,15 +2,21 @@
 @section('title', 'Home')
 
 <style>
+    /* --- 0. 引入高級中英文字體 (Google Fonts) --- */
+    /* Noto Serif TC: 高級中文宋體 | Cinzel & Playfair: 高級英文字體 */
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Serif+TC:wght@400;700;900&family=Playfair+Display:ital,wght@1,400;1,700&display=swap');
+
     /* --- 1. 全局與捲動設定 --- */
     html { scroll-behavior: smooth; }
     body, html { 
         overflow-x: hidden; 
-        /* 全局背景改為深咖啡黑，避免滑動時露出白底 */
+        /* 全局背景改為深咖啡黑 */
         background-color: #0F0B09; 
+        /* 全局字體優先使用 思源宋體 */
+        font-family: 'Noto Serif TC', 'Playfair Display', serif;
     } 
 
-    /* --- 2. 主地圖容器 (Hero Map) --- */
+    /* --- 2. 主地圖容器 --- */
     .map-container {
         position: relative;
         display: inline-block;
@@ -23,10 +29,10 @@
         width: 100%;
         height: auto;
         display: block;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.6); /* 陰影加深 */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
     }
 
-    /* --- 3. 地圖互動點 (維持金色) --- */
+    /* --- 3. 地圖互動點 --- */
     .map-point {
         position: absolute;
         width: 20px;
@@ -48,7 +54,6 @@
         border-color: #fff;
     }
 
-    /* 呼吸燈動畫 */
     .map-point::after {
         content: '';
         position: absolute;
@@ -70,9 +75,10 @@
         left: 25px; 
         top: 50%;
         transform: translateY(-50%);
-        color: #FFF8E1; /* 奶油白 */
-        font-size: 14px;
-        font-weight: bold;
+        color: #FFF8E1;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 1px;
         white-space: nowrap;
         opacity: 1;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
@@ -80,52 +86,50 @@
         transition: all 0.3s ease;
     }
 
-    /* --- 4. 右上角 Google Map 定位小地圖 (配色修改) --- */
+    /* --- 4. 台灣定位小地圖 (右上角) --- */
     .locator-map {
         position: absolute;
         top: 20px;  
         right: 20px;    
         width: 200px; 
         height: 150px;
-        
-        /* 邊框改為低調的古銅金 */
         border: 1px solid #8C6B3F; 
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 5px 20px rgba(0,0,0,0.7);
         z-index: 20;
-        background-color: #1B120F; /* 深咖啡底 */
+        background-color: #1B120F;
     }
 
     .locator-map iframe {
         width: 100%;
         height: 100%;
         border: 0;
-        opacity: 0.75; /* 讓 Google Map 暗一點，更有質感 */
-        filter: sepia(30%) hue-rotate(350deg); /* 微調地圖色調偏暖 */
+        opacity: 0.75;
+        filter: sepia(30%) hue-rotate(350deg);
         transition: opacity 0.3s;
     }
     
     .locator-map:hover iframe {
         opacity: 1;
-        filter: none; /* 滑鼠移過去恢復原色 */
+        filter: none;
     }
 
-    /* [修改] 阿里山標籤配色：金色底 + 深褐字 */
     .map-overlay-label {
         position: absolute;
         bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
         background-color: #D4AF37;
-        color: #2b1b17; /* ★ 改成深咖啡色字，不要綠色 */
+        color: #2b1b17;
         padding: 4px 12px;
         border-radius: 20px;
-        font-size: 12px;
+        font-size: 13px;
         font-weight: bold;
         white-space: nowrap;
         box-shadow: 0 2px 5px rgba(0,0,0,0.5);
         pointer-events: none;
+        font-family: 'Noto Serif TC', serif;
     }
     
     .map-overlay-label::after {
@@ -139,9 +143,94 @@
         border-color: #D4AF37 transparent transparent transparent;
     }
 
-    /* --- 5. [重點修改] 下方部落詳細資訊區配色 --- */
+    /* --- 5. 字體與標題設計 --- */
+    .intro {
+        /* 讓文字容器稍微往下推一點，視覺更平衡 */
+        padding-top: 3rem !important; 
+    }
+
+    .section-heading {
+        position: relative;
+        padding-bottom: 30px;
+        /* 使用 Flex 讓標題置中且垂直排列 */
+        display: flex;
+        flex-direction: column;
+        align_items: center;
+        justify-content: center;
+    }
+
+    /* 上方小標 (英文裝飾) */
+    .heading-decoration {
+        font-family: 'Cinzel', serif;
+        font-size: 0.9rem;
+        color: #8C6B3F;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        opacity: 0.8;
+    }
+
+    /* 主標題：阿里山 (極大、金箔質感) */
+    .section-heading-main {
+        display: block;
+        font-family: 'Noto Serif TC', serif;
+        font-weight: 900; /* 極粗體 */
+        font-size: 3rem;
+        line-height: 1.1;
+        letter-spacing: 0.05em;
+        
+        /* 高級金箔流動漸層 */
+        background: linear-gradient(
+            135deg, 
+            #BF953F 0%, 
+            #FCF6BA 25%, 
+            #B38728 50%, 
+            #FBF5B7 75%, 
+            #AA771C 100%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        animation: shine 4s linear infinite;
+        filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
+        
+        margin-bottom: 10px;
+    }
+
+    /* 副標題：風味地圖 (拉開字距、優雅) */
+    .section-heading-sub {
+        display: block;
+        font-family: 'Noto Serif TC', serif;
+        font-weight: 400;
+        font-size: 1.5rem; 
+        color: #E6D2B5;
+        
+        /* 極致的字距拉伸 */
+        letter-spacing: 1.2em; 
+        text-indent: 1.2em;
+        
+        text-shadow: 0 0 10px rgba(230, 210, 181, 0.3);
+        position: relative;
+    }
+
+    /* 裝飾線 */
+    .section-heading::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+        margin: 25px auto 0;
+        opacity: 0.7;
+    }
+
+    @keyframes shine {
+        to { background-position: 200% center; }
+    }
+
+    /* --- 6. 部落詳細資訊區 --- */
     .tribes-detail-container {
-        /* 背景改為極深咖啡黑 */
         background-color: #0F0B09; 
         padding-top: 4rem;
         padding-bottom: 4rem;
@@ -161,63 +250,69 @@
         transform: translateY(0);
     }
 
+    /* 部落標題 */
     .tribe-header h2 {
+        font-family: 'Noto Serif TC', serif;
+        font-weight: 700;
         font-size: 2.5rem;
-        color: #E6D2B5; /* 拿鐵色標題 */
+        color: #E6D2B5;
         text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         text-align: center;
         margin-bottom: 0.5rem;
+        letter-spacing: 0.1em;
     }
 
     .tribe-header .subtitle {
-        color: #8C6B3F; /* 古銅金副標 */
+        font-family: 'Noto Serif TC', serif;
+        color: #8C6B3F;
         font-size: 1.1rem;
         letter-spacing: 0.1em;
         text-align: center;
         margin-bottom: 3rem;
     }
 
-    /* Google Map Embed 外框 */
     .map-embed {
         width: 100%;
         height: 350px;
-        border: 1px solid #5D4037; /* 深棕色邊框 */
+        border: 1px solid #5D4037;
         border-radius: 8px;
         box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-        filter: grayscale(20%); /* 降低地圖飽和度，比較不搶眼 */
+        filter: grayscale(20%);
     }
 
     .farms-info { color: #d4d4d4; }
 
-    /* [修改] 莊園卡片：改成半透明深棕色背景 */
     .farm-item {
-        /* 使用漸層深棕色，更有高級感 */
         background: linear-gradient(145deg, rgba(62, 39, 35, 0.4), rgba(45, 28, 25, 0.4));
         padding: 1.5rem;
         margin-bottom: 1rem;
-        border-left: 3px solid #D4AF37; /* 左側金線 */
+        border-left: 3px solid #D4AF37;
         border-radius: 6px;
         text-align: left;
-        border-top: 1px solid rgba(255,255,255,0.05); /* 上方微光 */
+        border-top: 1px solid rgba(255,255,255,0.05);
     }
 
+    /* 莊園名稱 */
     .farm-item h3 {
-        color: #FFECB3; /* 淡金色標題 */
+        font-family: 'Noto Serif TC', serif;
+        color: #FFECB3;
         margin-bottom: 0.5rem;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        letter-spacing: 0.05em;
     }
     
-    .farm-item p {
-        color: #D7CCC8; /* 淺灰咖文字 */
+    .farm-item p { 
+        color: #D7CCC8; 
+        font-size: 1rem;
+        letter-spacing: 0.02em;
     }
 
-    /* [修改] 獎章：文字改成深咖啡色 */
     .award-badge {
         background: linear-gradient(135deg, #BCAAA4 0%, #D4AF37 100%);
-        color: #2b1b17; /* ★ 深咖啡字 */
+        color: #2b1b17;
         padding: 0.3rem 0.8rem;
         border-radius: 20px;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         font-weight: bold;
         display: inline-flex;
         align-items: center;
@@ -225,15 +320,15 @@
         margin-right: 5px;
         margin-top: 5px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        font-family: 'Noto Serif TC', serif;
     }
     .award-badge::before { content: "🏆"; }
 
-    /* 回到頂端按鈕 */
     .back-button {
         position: fixed;
         bottom: 2rem;
         right: 2rem;
-        background: rgba(30, 20, 15, 0.9); /* 深咖啡底 */
+        background: rgba(30, 20, 15, 0.9);
         border: 1px solid #D4AF37;
         color: #D4AF37;
         padding: 0.8rem 1.2rem;
@@ -245,6 +340,7 @@
         z-index: 1000;
         font-weight: bold;
         box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        font-family: 'Cinzel', serif;
     }
     .back-button.visible {
         opacity: 1;
@@ -252,7 +348,7 @@
     }
     .back-button:hover {
         background: #D4AF37;
-        color: #2b1b17; /* Hover 變深色字 */
+        color: #2b1b17;
     }
 
     /* 手機版適配 */
@@ -260,6 +356,8 @@
         .map-container { max-width: 100%; }
         .locator-map { width: 120px; height: 90px; top: 10px; right: 10px; }
         .map-overlay-label { font-size: 10px; padding: 2px 8px; }
+        .section-heading-main { font-size: 3rem; }
+        .section-heading-sub { font-size: 1rem; letter-spacing: 0.5em; text-indent: 0.5em; }
         .tribe-header h2 { font-size: 2rem; }
     }
 </style>
@@ -269,17 +367,21 @@
   {{-- 1. Hero Map 區塊 --}}
   <div class="intro text-center" style="background-color: rgba(15, 11, 9, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 1rem; padding: 2rem; margin-bottom: 0;">
     
-    <h2 class="section-heading mb-4">
-        <span class="section-heading-upper" style="color: #D4AF37;">Alishan Origin</span>
-        <span class="section-heading-lower" style="color: #E6D2B5;">Mapping the Flavor</span>
-    </h2>
+    {{-- ★★★ 標題區：高級中文設計 ★★★ --}}
+    <div class="section-heading mb-4">
+        <span class="heading-decoration">EST. TAIWAN</span>
+        
+        <span class="section-heading-main">阿里山</span>
+        
+        <span class="section-heading-sub">風味地圖</span>
+    </div>
 
     <div class="map-container" id="topMap">
         <img class="map-image rounded" src="{{ asset('img/map.png') }}" alt="阿里山地圖">
 
-        <a href="#leye" class="map-point" style="top: 45%; left: 30%;"><span class="point-label">Leye 樂野</span></a>
-        <a href="#dabang" class="map-point" style="top: 55%; left: 50%;"><span class="point-label">Dabang 達邦</span></a>
-        <a href="#tfuya" class="map-point" style="top: 52%; left: 55%;"><span class="point-label">Tfuya 特富野</span></a>
+        <a href="#leye" class="map-point" style="top: 45.9%; left: 17.4%;"><span class="point-label">樂野 Leye</span></a>
+        <a href="#dabang" class="map-point" style="top: 50.9%; left: 30.2%"><span class="point-label">達邦 Dabang</span></a>
+        <a href="#tfuya" class="map-point" style="top: 46.7%; left: 33.7%;"><span class="point-label">特富野 Tfuya</span></a>
 
         <div class="locator-map">
             <iframe 
@@ -291,7 +393,7 @@
     </div>
 </div>
 
-{{-- 2. 部落詳細介紹 (配色已更新) --}}
+{{-- 2. 部落詳細介紹 --}}
 <div class="tribes-detail-container">
     <div class="container">
 
@@ -390,7 +492,6 @@
 
     </div>
 </div>
-
 
 <button class="back-button" id="backButton" onclick="scrollToTop()">↑ Top</button>
 
