@@ -2,15 +2,13 @@
 @section('title', 'Home')
 
 <style>
-    /* --- 0. 引入高級中英文字體 (Google Fonts) --- */
-    /* Noto Serif TC: 高級中文宋體 | Cinzel & Playfair: 高級英文字體 */
+    /* --- 0. 引入Google Fonts --- */
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Serif+TC:wght@400;700;900&family=Playfair+Display:ital,wght@1,400;1,700&display=swap');
 
     /* --- 1. 全局與捲動設定 --- */
     html { scroll-behavior: smooth; }
     body, html { 
         overflow-x: hidden; 
-        /* 全局背景改為深咖啡黑 */
         background-color: #0F0B09; 
         /* 全局字體優先使用 思源宋體 */
         font-family: 'Noto Serif TC', 'Playfair Display', serif;
@@ -92,7 +90,7 @@
         top: 20px;  
         right: 20px;    
         width: 200px; 
-        height: 150px;
+        height: 220px;
         border: 1px solid #8C6B3F; 
         border-radius: 8px;
         overflow: hidden;
@@ -159,7 +157,7 @@
         justify-content: center;
     }
 
-    /* 上方小標 (英文裝飾) */
+    /* 上方小標 */
     .heading-decoration {
         font-family: 'Cinzel', serif;
         font-size: 0.9rem;
@@ -170,11 +168,11 @@
         opacity: 0.8;
     }
 
-    /* 主標題：阿里山 (極大、金箔質感) */
+    /* 主標題：阿里山 */
     .section-heading-main {
         display: block;
         font-family: 'Noto Serif TC', serif;
-        font-weight: 900; /* 極粗體 */
+        font-weight: 700; /* 極粗體 */
         font-size: 3rem;
         line-height: 1.1;
         letter-spacing: 0.05em;
@@ -198,7 +196,7 @@
         margin-bottom: 10px;
     }
 
-    /* 副標題：風味地圖 (拉開字距、優雅) */
+    /* 副標題：風味地圖 */
     .section-heading-sub {
         display: block;
         font-family: 'Noto Serif TC', serif;
@@ -367,7 +365,7 @@
   {{-- 1. Hero Map 區塊 --}}
   <div class="intro text-center" style="background-color: rgba(15, 11, 9, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 1rem; padding: 2rem; margin-bottom: 0;">
     
-    {{-- ★★★ 標題區：高級中文設計 ★★★ --}}
+    {{-- 標題區 --}}
     <div class="section-heading mb-4">
         <span class="heading-decoration">EST. TAIWAN</span>
         
