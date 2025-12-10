@@ -113,34 +113,6 @@
         filter: none;
     }
 
-    .map-overlay-label {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #D4AF37;
-        color: #2b1b17;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 13px;
-        font-weight: bold;
-        white-space: nowrap;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-        pointer-events: none;
-        font-family: 'Noto Serif TC', serif;
-    }
-    
-    .map-overlay-label::after {
-        content: '';
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: #D4AF37 transparent transparent transparent;
-    }
-
     /* --- 5. 字體與標題設計 --- */
     .intro {
         /* 讓文字容器稍微往下推一點，視覺更平衡 */
@@ -353,7 +325,6 @@
     @media (max-width: 768px) {
         .map-container { max-width: 100%; }
         .locator-map { width: 120px; height: 90px; top: 10px; right: 10px; }
-        .map-overlay-label { font-size: 10px; padding: 2px 8px; }
         .section-heading-main { font-size: 3rem; }
         .section-heading-sub { font-size: 1rem; letter-spacing: 0.5em; text-indent: 0.5em; }
         .tribe-header h2 { font-size: 2rem; }
@@ -378,15 +349,11 @@
         <img class="map-image rounded" src="{{ asset('img/map.png') }}" alt="阿里山地圖">
 
         <a href="#leye" class="map-point" style="top: 45.9%; left: 17.4%;"><span class="point-label">樂野 Leye</span></a>
-        <a href="#dabang" class="map-point" style="top: 50.9%; left: 30.2%"><span class="point-label">達邦 Dabang</span></a>
+        <a href="#dabang" class="map-point" style="top: 50.6%; left: 29.6%"><span class="point-label">達邦 Tapangʉ</span></a>
         <a href="#tfuya" class="map-point" style="top: 46.7%; left: 33.7%;"><span class="point-label">特富野 Tfuya</span></a>
 
         <div class="locator-map">
-            <iframe 
-                src="https://maps.google.com/maps?q=Alishan&t=p&z=6&ie=UTF8&iwloc=&output=embed" 
-                loading="lazy">
-            </iframe>
-            <div class="map-overlay-label">阿里山抵嘉</div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1612367.2104007208!2d119.27509921556039!3d24.228330365424824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346edea144acf379%3A0x7e289d76b64185fb!2zNjA15ZiJ576p57ij6Zi_6YeM5bGx6YSJ6Zi_6YeM5bGx!5e0!3m2!1szh-TW!2stw!4v1765384310310!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </div>
@@ -402,24 +369,41 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    <iframe class="map-embed" src="https://maps.google.com/maps?q=Leye+Alishan&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.7792205815686!2d120.69936207532733!3d23.46842697886377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ee804a44b0995%3A0x1daf94114ab482b5!2z5qiC6YeO6YOo6JC9!5e0!3m2!1szh-TW!2stw!4v1765382969730!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="col-lg-6">
                     <div class="farms-info">
                         <div class="farm-item">
-                            <h3>天鵝湖咖啡莊園</h3>
-                            <p>位於樂野部落核心區域，以獨特的蜜處理法聞名。莊園海拔1200公尺，終年雲霧繚繞，孕育出帶有楓糖與熟果香氣的精品咖啡豆。</p>
+                            <h3>鄒築園</h3>
+                            <p>主人: 方政倫(被稱為「咖啡王子」)</p>
+                            <p>位置: 嘉義縣阿里山鄉樂野村二鄰七十一號</p>
                             <div class="awards">
-                                <span class="award-badge">2023 金獎</span>
-                                <span class="award-badge">CQI 85分</span>
+                                <span class="award-badge">2017十大神農獎</span>
+                                <span class="award-badge">2018亞洲咖啡生豆評鑑冠軍</span>
+                                <span class="award-badge">2019兩岸咖啡三十強精品咖啡冠軍</span>
+                                <span class="award-badge">2018亞洲咖啡年會生豆組第一名</span>
+                                <span class="award-badge">2018年台灣國產精品咖啡豆評鑑金質獎</span>
+                                <span class="award-badge">2024年台灣卓越盃咖啡國際競標總統獎認證</span>
+                                <span class="award-badge">阿里山莊園咖啡精英交流賽多個獎項</span>
                             </div>
                         </div>
                         <div class="farm-item">
-                            <h3>鄒築園咖啡</h3>
-                            <p>傳承三代的家族莊園，堅持有機栽培。咖啡豆經日曬處理，風味層次豐富，帶有莓果與可可的尾韻。</p>
+                            <h3>優遊吧斯瑪翡咖啡莊園</h3>
+                            <p>主人: 董事長鄭虞坪</p>
+                            <p>位置: 嘉義縣阿里山鄉樂野村4 鄰127-2 號</p>
                             <div class="awards">
-                                <span class="award-badge">產銷履歷</span>
-                                <span class="award-badge">有機認證</span>
+                                <span class="award-badge">「2019臺灣國產精品咖啡豆評鑑」金質獎</span>
+                                <span class="award-badge">銀質獎「2020臺灣國產精品咖啡豆評鑑」頭等獎</span>
+                                <span class="award-badge">阿里山莊園咖啡精英交流賽多個獎項</span>
+                                <span class="award-badge">全台第一通過國際雨林認證咖啡莊園</span>
+                            </div>
+                        </div>
+                        <div class="farm-item">
+                            <h3>鄒讚咖啡</h3>
+                            <p>主人: 陳忠明</p>
+                            <p>位置: 嘉義縣阿里山鄉樂野村2鄰58號</p>
+                            <div class="awards">
+                                <span class="award-badge">2024年阿里山莊園咖啡精英交流賽日曬組銀質獎</span>
                             </div>
                         </div>
                     </div>
@@ -429,27 +413,23 @@
 
         <div class="tribe-section" id="dabang">
             <div class="tribe-header">
-                <h2>達邦部落 Dabang</h2>
-                <p class="subtitle">海拔 1300m | 鄒族文化的起源地</p>
+                <h2>達邦部落 Tapangʉ</h2>
+                <p class="subtitle">海拔 900m | 鄒族文化的起源地</p>
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    <iframe class="map-embed" src="https://maps.google.com/maps?q=Dabang+Alishan&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.1852920640576!2d120.74717907478308!3d23.453779900100145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ee784da2cdd9d%3A0x3188cc9c3afa7e6e!2z6Zi_6YeM5bGx6YSJ6YGU6YKm6YOo6JC9!5e0!3m2!1szh-TW!2stw!4v1765383102230!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="col-lg-6">
                     <div class="farms-info">
                         <div class="farm-item">
-                            <h3>山美咖啡工坊</h3>
-                            <p>結合鄒族傳統智慧與現代精品咖啡技術，採用水洗與日曬混合處理法，創造出乾淨明亮且帶有花香的獨特風味。</p>
+                            <h3>七彩琉璃咖啡莊園</h3>
+                            <p>主人: 莊家榮</p>
+                            <p>位置: 嘉義縣阿里山鄉達邦村七鄰</p>
                             <div class="awards">
-                                <span class="award-badge">阿里山評鑑頭等獎</span>
-                            </div>
-                        </div>
-                        <div class="farm-item">
-                            <h3>勇士咖啡莊園</h3>
-                            <p>以鄒族勇士精神命名，莊園採用友善環境的耕作方式。咖啡豆經厭氧發酵處理，展現複雜的水果發酵香氣。</p>
-                            <div class="awards">
-                                <span class="award-badge">SCA 精品認證</span>
+                                <span class="award-badge">2025 COE 臺灣卓越盃咖啡國際競標」 第一名</span>
+                                <span class="award-badge">全國精品咖啡豆評鑑特等獎</span>
+                                <span class="award-badge">台灣咖啡節烘培大師冠軍</span>
                             </div>
                         </div>
                     </div>
@@ -460,27 +440,45 @@
         <div class="tribe-section" id="tfuya">
             <div class="tribe-header">
                 <h2>特富野部落 Tfuya</h2>
-                <p class="subtitle">海拔 1400m | 原始林中的水洗精粹</p>
+                <p class="subtitle">海拔 1050m | 原始林中的水洗精粹</p>
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    <iframe class="map-embed" src="https://maps.google.com/maps?q=Tefuye+Alishan&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14639.590062318317!2d120.74860824436239!3d23.464160945326235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346edd8033a96bd7%3A0x7395e9f399139c2d!2zNjA15ZiJ576p57ij6Zi_6YeM5bGx6YSJ54m55a-M6YeO!5e0!3m2!1szh-TW!2stw!4v1765383149480!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="col-lg-6">
                     <div class="farms-info">
                         <div class="farm-item">
-                            <h3>雲頂咖啡園</h3>
-                            <p>位於海拔最高的特富野部落，莊園被原始森林環繞。採用傳統水洗法，保留咖啡豆最純粹的風土特色，口感清新細膩。</p>
+                            <h3>飛鼠咖啡Peisu coffee</h3>
+                            <p>主人: 陳瑜安</p>
+                            <p>位置: 嘉義縣阿里山鄉達邦村特富野社9鄰228號附6</p>
                             <div class="awards">
-                                <span class="award-badge">特等獎</span>
-                                <span class="award-badge">CQI 88分</span>
+                                <span class="award-badge">2025年第二屆臺灣咖啡分類分級 TCAGs 評鑑</span>
+                                <span class="award-badge">飛鼠咖啡 其他處理組 優選 (藝伎/日曬)</span>
                             </div>
                         </div>
                         <div class="farm-item">
-                            <h3>古道咖啡</h3>
-                            <p>沿著舊鄒族古道建立的咖啡園，得天獨厚的微型氣候與豐富的生態系統，孕育出帶有山林氣息的精品咖啡。</p>
+                            <h3>他扶芽 tfu'ya有機農園</h3>
+                            <p>主人: 陳清龍(龍哥)</p>
+                            <p>位置: 嘉義縣阿里山鄉達邦村10鄰281-1號</p>
                             <div class="awards">
-                                <span class="award-badge">雨林聯盟</span>
+                                <span class="award-badge">阿里山莊園咖啡精英交流賽多個獎項</span>
+                                <span class="award-badge">有機認證咖啡莊園</span>
+                                <span class="award-badge">2017年台灣精品咖啡生豆評鑑傳統水洗組銀質獎</span>
+                                <span class="award-badge">2018年台灣有機咖啡評鑑大賞水洗組與其他處理組一等獎</span>
+                                <span class="award-badge">台灣國產精品咖啡豆評鑑銀質獎</span>
+                                <span class="award-badge">兩岸盃30強精品咖啡交流賽 優等獎</span>
+                            </div>
+                        </div>
+                        <div class="farm-item">
+                            <h3>雅慕伊咖啡莊園</h3>
+                            <p>主人: 浦瀚文</p>
+                            <p>位置: 達邦村247附8號雅慕伊咖啡莊園</p>
+                            <div class="awards">
+                                <span class="award-badge">阿里山莊園咖啡精英交流賽多個獎項</span>
+                                <span class="award-badge">2025 COE 臺灣卓越盃咖啡國際競標得主之一</span>
+                                <span class="award-badge">臺灣咖啡TCAGs分級分類評鑑 精選</span>
+                                <span class="award-badge">竹梅源台灣精品咖啡大賞 金賞</span>
                             </div>
                         </div>
                     </div>
