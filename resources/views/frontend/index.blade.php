@@ -125,7 +125,7 @@
         /* 使用 Flex 讓標題置中且垂直排列 */
         display: flex;
         flex-direction: column;
-        align_items: center;
+        align-items: center;
         justify-content: center;
     }
 
@@ -250,49 +250,122 @@
         filter: grayscale(20%);
     }
 
-    .farms-info { color: #d4d4d4; }
+    .farms-info { 
+        color: #d4d4d4;
+        display: grid;
+        gap: 1.5rem;
+    }
+    
+    /* 當只有一個莊園時，讓它置中且不要太寬 */
+    .farms-info:has(.farm-item:only-child) {
+        max-width: 100%;
+    }
+    
+    .farms-info:has(.farm-item:only-child) .farm-item {
+        margin: 0 auto;
+    }
 
     .farm-item {
         background: linear-gradient(145deg, rgba(62, 39, 35, 0.4), rgba(45, 28, 25, 0.4));
-        padding: 1.5rem;
-        margin-bottom: 1rem;
+        padding: 1.8rem;
+        margin-bottom: 0; /* 移除底部邊距，由 flexbox gap 控制 */
         border-left: 3px solid #D4AF37;
-        border-radius: 6px;
+        border-radius: 8px;
         text-align: left;
-        border-top: 1px solid rgba(255,255,255,0.05);
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        flex: 1; /* 讓每個卡片佔據相同比例的空間 */
+        min-height: 180px; /* 確保卡片有最小高度 */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* 讓內容分布更均勻 */
+    }
+    
+    .farm-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(180deg, #D4AF37, #FFD700, #D4AF37);
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+    
+    .farm-item:hover {
+        transform: translateY(-5px);
+        border-color: rgba(212, 175, 55, 0.4);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
     }
 
     /* 莊園名稱 */
     .farm-item h3 {
         font-family: 'Noto Serif TC', serif;
         color: #FFECB3;
-        margin-bottom: 0.5rem;
-        font-size: 1.4rem;
-        letter-spacing: 0.05em;
+        margin-bottom: 0.8rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.08em;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .farm-item h3::before {
+        content: '◆';
+        color: #D4AF37;
+        font-size: 0.8rem;
     }
     
     .farm-item p { 
         color: #D7CCC8; 
-        font-size: 1rem;
+        font-size: 0.95rem;
         letter-spacing: 0.02em;
+        margin-bottom: 0.4rem;
+        line-height: 1.6;
+    }
+    
+    .farm-info-label {
+        color: #8C6B3F;
+        font-size: 0.85rem;
+        display: inline-block;
+        min-width: 50px;
+        margin-right: 0.5rem;
     }
 
     .award-badge {
-        background: linear-gradient(135deg, #BCAAA4 0%, #D4AF37 100%);
+        background: linear-gradient(135deg, #8C6B3F 0%, #D4AF37 50%, #8C6B3F 100%);
         color: #2b1b17;
-        padding: 0.3rem 0.8rem;
+        padding: 0.4rem 0.9rem;
         border-radius: 20px;
-        font-size: 0.9rem;
-        font-weight: bold;
+        font-size: 0.85rem;
+        font-weight: 600;
         display: inline-flex;
         align-items: center;
-        gap: 0.3rem;
-        margin-right: 5px;
-        margin-top: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        gap: 0.4rem;
+        margin-right: 6px;
+        margin-bottom: 6px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.4);
         font-family: 'Noto Serif TC', serif;
+        border: 1px solid rgba(255, 248, 225, 0.2);
+        transition: all 0.2s ease;
     }
-    .award-badge::before { content: "🏆"; }
+    .award-badge::before { 
+        content: "🏆"; 
+        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+    }
+    .award-badge:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 12px rgba(212, 175, 55, 0.4);
+    }
+    
+    .awards {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
 
     .back-button {
         position: fixed;
@@ -328,6 +401,15 @@
         .section-heading-main { font-size: 3rem; }
         .section-heading-sub { font-size: 1rem; letter-spacing: 0.5em; text-indent: 0.5em; }
         .tribe-header h2 { font-size: 2rem; }
+        
+        /* 手機版讓地圖和內容垂直排列 */
+        .tribe-section .row {
+            flex-direction: column;
+        }
+        
+        .map-embed {
+            min-height: 300px;
+        }
     }
 </style>
 
@@ -353,7 +435,7 @@
         <a href="#tfuya" class="map-point" style="top: 46.7%; left: 33.7%;"><span class="point-label">特富野 Tfuya</span></a>
 
         <div class="locator-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1612367.2104007208!2d119.27509921556039!3d24.228330365424824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346edea144acf379%3A0x7e289d76b64185fb!2zNjA15ZiJ576p57ij6Zi_6YeM5bGx6YSJ6Zi_6YeM5bGx!5e0!3m2!1szh-TW!2stw!4v1765384310310!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1612367.2104007208!2d119.27509921556039!3d24.228330365424824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346edea144acf379%3A0x7e289d76b64185fb!2zNjA15ZmJ576p57ij6Zi_6YeM5bGx6YSJ6Zi_6YeM5bGx!5e0!3m2!1szh-TW!2stw!4v1765384310310!5m2!1szh-TW!2stw" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </div>
@@ -365,7 +447,7 @@
         <div class="tribe-section" id="leye">
             <div class="tribe-header">
                 <h2>樂野部落 Leye</h2>
-                <p class="subtitle">海拔 1200m | 楓香與蜜處理的故鄉</p>
+                <p class="subtitle">海拔 1200m | 楓香故鄉・高山咖啡聚落</p>
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-4">
@@ -375,8 +457,8 @@
                     <div class="farms-info">
                         <div class="farm-item">
                             <h3>鄒築園</h3>
-                            <p>主人: 方政倫(被稱為「咖啡王子」)</p>
-                            <p>位置: 嘉義縣阿里山鄉樂野村二鄰七十一號</p>
+                            <p><span class="farm-info-label">主理人</span>方政倫（咖啡王子）</p>
+                            <p><span class="farm-info-label">位置</span>嘉義縣阿里山鄉樂野村 2 鄰 71 號</p>
                             <div class="awards">
                                 <span class="award-badge">2017十大神農獎</span>
                                 <span class="award-badge">2018亞洲咖啡生豆評鑑冠軍</span>
@@ -389,19 +471,19 @@
                         </div>
                         <div class="farm-item">
                             <h3>優遊吧斯瑪翡咖啡莊園</h3>
-                            <p>主人: 董事長鄭虞坪</p>
-                            <p>位置: 嘉義縣阿里山鄉樂野村4 鄰127-2 號</p>
+                            <p><span class="farm-info-label">主理人</span>董事長鄭虞坪</p>
+                            <p><span class="farm-info-label">位置</span>嘉義縣阿里山鄉樂野村 4 鄰 127-2 號</p>
                             <div class="awards">
-                                <span class="award-badge">「2019臺灣國產精品咖啡豆評鑑」金質獎</span>
-                                <span class="award-badge">銀質獎「2020臺灣國產精品咖啡豆評鑑」頭等獎</span>
+                                <span class="award-badge">2019臺灣國產精品咖啡豆評鑑 金質獎 銀質獎</span>
+                                <span class="award-badge">2020臺灣國產精品咖啡豆評鑑 頭等獎</span>
                                 <span class="award-badge">阿里山莊園咖啡精英交流賽多個獎項</span>
                                 <span class="award-badge">全台第一通過國際雨林認證咖啡莊園</span>
                             </div>
                         </div>
                         <div class="farm-item">
                             <h3>鄒讚咖啡</h3>
-                            <p>主人: 陳忠明</p>
-                            <p>位置: 嘉義縣阿里山鄉樂野村2鄰58號</p>
+                            <p><span class="farm-info-label">主理人</span>陳忠明</p>
+                            <p><span class="farm-info-label">位置</span>嘉義縣阿里山鄉樂野村 2 鄰 58 號</p>
                             <div class="awards">
                                 <span class="award-badge">2024年阿里山莊園咖啡精英交流賽日曬組銀質獎</span>
                             </div>
@@ -414,7 +496,7 @@
         <div class="tribe-section" id="dabang">
             <div class="tribe-header">
                 <h2>達邦部落 Tapangʉ</h2>
-                <p class="subtitle">海拔 900m | 鄒族文化的起源地</p>
+                <p class="subtitle">海拔 900m | 鄒族文化重鎮・最大的傳統聚落</p>
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-4">
@@ -424,10 +506,10 @@
                     <div class="farms-info">
                         <div class="farm-item">
                             <h3>七彩琉璃咖啡莊園</h3>
-                            <p>主人: 莊家榮</p>
-                            <p>位置: 嘉義縣阿里山鄉達邦村七鄰</p>
+                            <p><span class="farm-info-label">主理人</span>莊家榮</p>
+                            <p><span class="farm-info-label">位置</span>嘉義縣阿里山鄉達邦村 7 鄰</p>
                             <div class="awards">
-                                <span class="award-badge">2025 COE 臺灣卓越盃咖啡國際競標」 第一名</span>
+                                <span class="award-badge">2025 COE 臺灣卓越盃咖啡國際競標 第一名</span>
                                 <span class="award-badge">全國精品咖啡豆評鑑特等獎</span>
                                 <span class="award-badge">台灣咖啡節烘培大師冠軍</span>
                             </div>
@@ -440,27 +522,27 @@
         <div class="tribe-section" id="tfuya">
             <div class="tribe-header">
                 <h2>特富野部落 Tfuya</h2>
-                <p class="subtitle">海拔 1050m | 原始林中的水洗精粹</p>
+                <p class="subtitle">海拔 1050m | 山林環境中的水洗咖啡產地</p>
             </div>
             <div class="row">
                 <div class="col-lg-6 mb-4">
-                    <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14639.590062318317!2d120.74860824436239!3d23.464160945326235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346edd8033a96bd7%3A0x7395e9f399139c2d!2zNjA15ZiJ576p57ij6Zi_6YeM5bGx6YSJ54m55a-M6YeO!5e0!3m2!1szh-TW!2stw!4v1765383149480!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe class="map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14639.590062318317!2d120.74860824436239!3d23.464160945326235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346edd8033a96bd7%3A0x7395e9f399139c2d!2zNjA15ZmJ576p57ij6Zi_6YeM5bGx6YSJ54m55a-M6YeO!5e0!3m2!1szh-TW!2stw!4v1765383149480!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 <div class="col-lg-6">
                     <div class="farms-info">
                         <div class="farm-item">
-                            <h3>飛鼠咖啡Peisu coffee</h3>
-                            <p>主人: 陳瑜安</p>
-                            <p>位置: 嘉義縣阿里山鄉達邦村特富野社9鄰228號附6</p>
+                            <h3>飛鼠咖啡 Peisu Coffee</h3>
+                            <p><span class="farm-info-label">主理人</span>陳瑜安</p>
+                            <p><span class="farm-info-label">位置</span>嘉義縣阿里山鄉達邦村特富野社 9 鄰 228 號附 6</p>
                             <div class="awards">
                                 <span class="award-badge">2025年第二屆臺灣咖啡分類分級 TCAGs 評鑑</span>
-                                <span class="award-badge">飛鼠咖啡 其他處理組 優選 (藝伎/日曬)</span>
+                                <span class="award-badge">飛鼠咖啡 其他處理組 優選（藝伎/日曬）</span>
                             </div>
                         </div>
                         <div class="farm-item">
-                            <h3>他扶芽 tfu'ya有機農園</h3>
-                            <p>主人: 陳清龍(龍哥)</p>
-                            <p>位置: 嘉義縣阿里山鄉達邦村10鄰281-1號</p>
+                            <h3>他扶芽 tfu'ya 有機農園</h3>
+                            <p><span class="farm-info-label">主理人</span>陳清龍（龍哥）</p>
+                            <p><span class="farm-info-label">位置</span>嘉義縣阿里山鄉達邦村 10 鄰 281-1 號</p>
                             <div class="awards">
                                 <span class="award-badge">阿里山莊園咖啡精英交流賽多個獎項</span>
                                 <span class="award-badge">有機認證咖啡莊園</span>
@@ -472,8 +554,8 @@
                         </div>
                         <div class="farm-item">
                             <h3>雅慕伊咖啡莊園</h3>
-                            <p>主人: 浦瀚文</p>
-                            <p>位置: 達邦村247附8號雅慕伊咖啡莊園</p>
+                            <p><span class="farm-info-label">主理人</span>浦瀚文</p>
+                            <p><span class="farm-info-label">位置</span>達邦村 247 附 8 號雅慕伊咖啡莊園</p>
                             <div class="awards">
                                 <span class="award-badge">阿里山莊園咖啡精英交流賽多個獎項</span>
                                 <span class="award-badge">2025 COE 臺灣卓越盃咖啡國際競標得主之一</span>
