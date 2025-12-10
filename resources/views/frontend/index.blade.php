@@ -2,6 +2,26 @@
 @section('title', 'Home')
 @section('content')
 
+  {{-- 阿里山地圖 --}}
+  <section class="page-section clearfix">
+    <div class="container">
+      <div class="intro text-center" style="
+        background-color: rgba(20, 20, 20, 0.4); 
+        backdrop-filter: blur(10px); 
+        -webkit-backdrop-filter: blur(10px); 
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem; 
+        padding: 3rem;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    ">
+          <h2 class="section-heading mb-4">
+            <span class="section-heading-upper" style="color: #D4AF37;">Alishan Origin</span>
+            <span class="section-heading-lower" style="color: #F2E8CF;">Mapping the Flavor</span>
+          </h2>
+          <img class="img-fluid" src="{{ asset('img/map.png') }}" alt="阿里山產區地圖" style="max-height: 800px;">
+      </div>
+    </div>
+  </section>
 
   <section class="page-section clearfix">
     <div class="container">
