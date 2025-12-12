@@ -10,6 +10,11 @@
           <div class="bg-faded p-5 d-flex ml-auto rounded">
             <h2 class="section-heading mb-0">
               <span class="section-heading-lower fs-5">特富野 (Tfu'ya)</span>
+              <a href="https://www.raccoonroaster.com/products/%E5%8F%B0%E7%81%A3%E5%92%96%E5%95%A1-%E9%98%BF%E9%87%8C%E5%B1%B1-%E7%89%B9%E5%AF%8C%E9%87%8E"
+                target="_blank"
+                    class="btn btn-sm btn-secondary">
+                    前往購買
+                </a>
             </h2>
           </div>
         </div>
@@ -35,6 +40,11 @@
           <div class="bg-faded p-5 d-flex mr-auto rounded">
             <h2 class="section-heading mb-0">
               <span class="section-heading-lower">達邦 (Tapangu)</span>
+              <a href="https://www.justincoffee.com.tw/zh-TW/products/taiwan_alishan_dabang?srsltid=AfmBOoq2gbGQEiAokNKdYbPwPV3hbyrwKILB62uHBDOnSEdS01cSkBb7"
+                target="_blank"
+                class="btn btn-sm btn-secondary">
+                前往購買
+                </a>
             </h2>
           </div>
         </div>
@@ -59,6 +69,11 @@
           <div class="bg-faded p-5 d-flex ml-auto rounded">
             <h2 class="section-heading mb-0">
               <span class="section-heading-lower">樂野 (Lalauya)</span>
+              <a href="https://www.oklaocoffee.com/coffee/MTExNg/detail"
+                target="_blank"
+                class="btn btn-sm btn-secondary">
+                前往購買
+                </a>
             </h2>
           </div>
         </div>
