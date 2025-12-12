@@ -261,7 +261,7 @@
 <!-- 主標題區 -->
 <section class="page-section about-heading">
     <div class="container">
-        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about.jpg" alt="鄒族咖啡">
+        <img class="img-fluid rounded about-heading-img mb-3 mb-lg-0" src="img/about1.png" alt="鄒族咖啡">
         <div class="about-heading-content">
             <div class="row">
                 <div class="col-xl-9 col-lg-10 mx-auto">
