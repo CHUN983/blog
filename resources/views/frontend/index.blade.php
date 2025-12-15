@@ -430,7 +430,7 @@
     <div class="map-container" id="topMap">
         <img class="map-image rounded" src="{{ asset('img/map.png') }}" alt="阿里山地圖">
 
-        <a href="#leye" class="map-point" style="top: 45.9%; left: 17.4%;"><span class="point-label">樂野 Leye</span></a>
+        <a href="#leye" class="map-point" style="top: 45.9%; left: 17.4%;"><span class="point-label">樂野 Lalauya</span></a>
         <a href="#dabang" class="map-point" style="top: 50.6%; left: 29.6%"><span class="point-label">達邦 Tapangʉ</span></a>
         <a href="#tfuya" class="map-point" style="top: 46.7%; left: 33.7%;"><span class="point-label">特富野 Tfuya</span></a>
 
@@ -446,7 +446,7 @@
 
         <div class="tribe-section" id="leye">
             <div class="tribe-header">
-                <h2>樂野部落 Leye</h2>
+                <h2>樂野部落 Lalauya</h2>
                 <p class="subtitle">海拔 1200m | 楓香故鄉・高山咖啡聚落</p>
             </div>
             <div class="row">
