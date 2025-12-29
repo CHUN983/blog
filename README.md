@@ -396,8 +396,7 @@ php artisan migrate:fresh
 
 如有任何問題或建議，歡迎聯繫：
 
-- **Email**: your-email@example.com
-- **Website**: https://your-website.com
+- **Email**: apple0908070605@gmail.com
 
 ---
 
