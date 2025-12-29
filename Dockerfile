@@ -106,24 +106,24 @@ EOF
 # Copy startup script
 COPY <<'EOF' /usr/local/bin/start.sh
 #!/bin/sh
-set -e
 
-# Start PHP-FPM in background
+echo "Starting PHP-FPM..."
 php-fpm -D
 
-# Ensure database file exists and has correct permissions
+echo "Setting up database..."
+mkdir -p /var/www/html/database
 touch /var/www/html/database/database.sqlite
 chown www-data:www-data /var/www/html/database/database.sqlite
 
-# Run migrations
-php artisan migrate --force
+echo "Running migrations..."
+php artisan migrate --force || echo "Migration failed, continuing..."
 
-# Optimize Laravel
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
+echo "Optimizing Laravel..."
+php artisan config:cache || echo "Config cache failed, continuing..."
+php artisan route:cache || echo "Route cache failed, continuing..."
+php artisan view:cache || echo "View cache failed, continuing..."
 
-# Start Nginx in foreground
+echo "Starting Nginx on port 8080..."
 nginx -g 'daemon off;'
 EOF
 
