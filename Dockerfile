@@ -46,13 +46,19 @@ FROM php:8.2-fpm-alpine
 
 WORKDIR /var/www/html
 
-# Install runtime dependencies
+# Install runtime dependencies only
 RUN apk add --no-cache \
     nginx \
     libpng \
     libzip \
-    curl \
-    && docker-php-ext-install pdo pdo_mysql zip gd opcache
+    curl
+
+# Copy PHP extensions from builder
+COPY --from=builder /usr/local/lib/php/extensions/no-debug-non-zts-20220829/ /usr/local/lib/php/extensions/no-debug-non-zts-20220829/
+COPY --from=builder /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
+
+# Enable opcache
+RUN docker-php-ext-enable opcache
 
 # Copy application from builder
 COPY --from=builder /var/www/html /var/www/html
