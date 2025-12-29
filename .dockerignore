@@ -1,6 +1,8 @@
 # Dependencies
-/vendor
-/node_modules
+vendor/
+node_modules/
+**/vendor
+**/node_modules
 
 # Environment files
 .env
@@ -8,21 +10,21 @@
 !.env.example
 
 # Testing
-/tests
-/phpunit.xml
-/.phpunit.cache
+tests/
+phpunit.xml
+.phpunit.cache
 
 # Development files
-/storage/logs/*
-/storage/framework/cache/*
-/storage/framework/sessions/*
-/storage/framework/testing/*
-/storage/framework/views/*
-!/storage/logs/.gitignore
-!/storage/framework/cache/.gitignore
-!/storage/framework/sessions/.gitignore
-!/storage/framework/testing/.gitignore
-!/storage/framework/views/.gitignore
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/testing/*
+storage/framework/views/*
+!storage/logs/.gitignore
+!storage/framework/cache/.gitignore
+!storage/framework/sessions/.gitignore
+!storage/framework/testing/.gitignore
+!storage/framework/views/.gitignore
 
 # Git
 .git
@@ -46,9 +48,9 @@ CLAUDE_TEMPLATE.md
 *.md
 
 # Build artifacts
-/public/hot
-/public/storage
+public/hot
+public/storage
 
 # Laravel Sail
-/docker-compose.yml
-/.sail
+docker-compose.yml
+.sail
